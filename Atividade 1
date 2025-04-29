@@ -1,2 +1,96 @@
 cd docs
 nano atividade1.md
+# Atividade 1 – Documentação do Projeto: AjudaSolidária
+
+## 🔹 Dados do Projeto
+
+- **Tipo de Projeto:** Extensionista  
+- **Tema Integrador:** Projeto de Sistemas de Banco de Dados  
+- **Período:** 3º período  
+- **Carga Horária:** 60h – Extensão  
+- **Público-alvo:** Público geral / Pessoas aspirantes da área  
+- **Nome da Atividade:** Plataforma de Doações e Distribuição de Recursos – *AjudaSolidária*  
+- **Professor(a):** Denise Moraes  
+
+---
+
+## ✅ Requisitos Funcionais
+
+- RF01: Permitir cadastro de usuários (doadores, beneficiários, organizações sociais).
+- RF02: Permitir cadastro de itens para doação.
+- RF03: Listar itens disponíveis para doação.
+- RF04: Permitir que beneficiários registrem solicitações.
+- RF05: Permitir que administradores acompanhem, editem e excluam registros.
+- RF06: Atualizar o status de itens (ex.: "Disponível", "Reservado", "Entregue").
+
+---
+
+## 🚫 Requisitos Não Funcionais
+
+- RNF01: A plataforma deve ser acessível por navegadores modernos.
+- RNF02: Deve funcionar em dispositivos móveis.
+- RNF03: Deve manter os dados em banco de dados relacional.
+- RNF04: O sistema deve ter interface simples e amigável.
+- RNF05: O sistema será hospedado em repositório público no GitHub.
+
+---
+
+## 📜 Regras de Negócio
+
+- RN01: Um doador pode cadastrar múltiplos itens.
+- RN02: Um beneficiário só pode ter até 5 solicitações pendentes.
+- RN03: Itens marcados como “Entregue” não podem ser editados.
+- RN04: Apenas administradores podem excluir registros permanentemente.
+- RN05: Organizações sociais podem cadastrar eventos com prazos definidos.
+
+---
+
+## 📊 Diagrama de Caso de Uso (Descrição)
+
+**Atores:**
+- Doador
+- Beneficiário
+- Organização Social
+- Administrador
+
+**Casos de Uso:**
+- Cadastrar usuário
+- Cadastrar item para doação
+- Listar itens disponíveis
+- Solicitar item
+- Registrar solicitação de ajuda
+- Atualizar status do item
+- Gerenciar usuários e itens (Administrador)
+
+*(Sugestão: desenhar e salvar como `docs/caso_de_uso.png`)*
+
+---
+
+## 📐 Diagrama de Classes (Descrição)
+
+**Usuário**
+- id: int  
+- nome: string  
+- email: string  
+- senha: string  
+- tipo: string (doador, beneficiário, admin, organização)  
+
+**Item**
+- id: int  
+- nome: string  
+- quantidade: int  
+- status: string  
+- id_doador: int  
+
+**Solicitação**
+- id: int  
+- descricao: string  
+- status: string  
+- id_beneficiario: int  
+
+**Relações:**
+- Usuário pode cadastrar muitos Itens
+- Beneficiário pode ter várias Solicitações
+- Cada Item pertence a um Doador
+
+*(Sugestão: desenhar e salvar como `docs/diagrama_classes.png`)*
