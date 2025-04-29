@@ -92,5 +92,3 @@ nano atividade1.md
 - Usuário pode cadastrar muitos Itens
 - Beneficiário pode ter várias Solicitações
 - Cada Item pertence a um Doador
-
-*(Sugestão: desenhar e salvar como `docs/diagrama_classes.png`)*
