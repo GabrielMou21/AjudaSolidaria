@@ -1,0 +1,2 @@
+cd AjudaSolidaria
+mkdir docs
