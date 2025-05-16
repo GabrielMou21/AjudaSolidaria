@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-Este documento apresenta os requisitos funcionais, não funcionais e as regras de negócio da plataforma AjudaSolidária, um sistema digital voltado à doação e distribuição de recursos para comunidades carentes. A plataforma conecta doadores, beneficiários e organizações sociais, facilitando o processo de doação e solicitação de recursos.
+Este documento apresenta os requisitos funcionais e não funcionais da plataforma AjudaSolidária, um sistema digital voltado à doação e distribuição de recursos para comunidades carentes. A plataforma conecta doadores, beneficiários e organizações sociais, facilitando o processo de doação e solicitação de recursos.
 
 ## Requisitos Funcionais
 
