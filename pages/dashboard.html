@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Ong da Rosinha</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script>
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+ 
+        const currentTheme = localStorage.getItem("theme");
+        if (currentTheme === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+        } else if (currentTheme === "light") {
+            document.documentElement.setAttribute("data-theme", "light");
+        } else if (prefersDarkScheme.matches) {
+            document.documentElement.setAttribute("data-theme", "dark");
+        }
+    </script>
+</head>
+<body>
+    <!-- Dashboard Layout -->
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <img src="../assets/logo.png" alt="Ong da Rosinha Logo">
+                <h1>Ong da Rosinha</h1>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-hand-holding-heart"></i> Minhas Doações</a></li>
+                <li><a href="#"><i class="fas fa-hands-helping"></i> Solicitações</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Usuários</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+                <li><a href="#"><i class="fas fa-chart-bar"></i> Relatórios</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Configurações</a></li>
+                <li><a href="home.html"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+            </ul>
+            
+            <div class="theme-toggle-sidebar" id="theme-toggle-sidebar">
+                <i class="fas fa-moon"></i> Alternar Tema
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="dashboard-header">
+                <h2 class="dashboard-title">Dashboard</h2>
+                <div class="user-info">
+                    <span>Olá, <strong id="user-name">Administrador</strong></span>
+                    <div class="user-avatar">
+                        <img src="../assets/avatar-admin.jpg" alt="Avatar do usuário">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dashboard Cards -->
+            <div class="dashboard-cards">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-title">Total de Doações</div>
+                    <div class="dashboard-card-value">254</div>
+                    <div class="dashboard-card-change positive">+12% <i class="fas fa-arrow-up"></i></div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-title">Solicitações Pendentes</div>
+                    <div class="dashboard-card-value">42</div>
+                    <div class="dashboard-card-change negative">+8% <i class="fas fa-arrow-up"></i></div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-title">Doações Entregues</div>
+                    <div class="dashboard-card-value">187</div>
+                    <div class="dashboard-card-change positive">+15% <i class="fas fa-arrow-up"></i></div>
+                </div>
+                
+                <div class="dashboard-card">
+                    <div class="dashboard-card-title">Usuários Cadastrados</div>
+                    <div class="dashboard-card-value">523</div>
+                    <div class="dashboard-card-change positive">+5% <i class="fas fa-arrow-up"></i></div>
+                </div>
+            </div>
+            
+            <!-- Solicitações Recentes -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h3>Solicitações Recentes</h3>
+                    <a href="#" class="btn btn-sm">Ver Todas</a>
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Beneficiário</th>
+                                <th>Categoria</th>
+                                <th>Descrição</th>
+                                <th>Data</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#1254</td>
+                                <td>Maria Silva</td>
+                                <td>Alimentos</td>
+                                <td>Cesta básica para família de 4 pessoas</td>
+                                <td>19/05/2025</td>
+                                <td><span class="status status-pending">Pendente</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-sm btn-secondary">Aprovar</button>
+                                        <button class="btn btn-sm btn-outline">Recusar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#1253</td>
+                                <td>João Santos</td>
+                                <td>Roupas</td>
+                                <td>Roupas de inverno para crianças</td>
+                                <td>18/05/2025</td>
+                                <td><span class="status status-approved">Aprovada</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-sm">Ver Detalhes</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#1252</td>
+                                <td>Ana Oliveira</td>
+                                <td>Material Escolar</td>
+                                <td>Material escolar para 2 crianças</td>
+                                <td>18/05/2025</td>
+                                <td><span class="status status-pending">Pendente</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-sm btn-secondary">Aprovar</button>
+                                        <button class="btn btn-sm btn-outline">Recusar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#1251</td>
+                                <td>Carlos Pereira</td>
+                                <td>Móveis</td>
+                                <td>Cama e colchão para família desabrigada</td>
+                                <td>17/05/2025</td>
+                                <td><span class="status status-rejected">Recusada</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-sm">Ver Detalhes</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#1250</td>
+                                <td>Fernanda Lima</td>
+                                <td>Higiene Pessoal</td>
+                                <td>Produtos de higiene para família de 3 pessoas</td>
+                                <td>17/05/2025</td>
+                                <td><span class="status status-approved">Aprovada</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-sm">Ver Detalhes</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Doações Recentes -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h3>Doações Recentes</h3>
+                    <a href="#" class="btn btn-sm">Ver Todas</a>
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Doador</th>
+                                <th>Item</th>
+                                <th>Categoria</th>
+                                <th>Data</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#2154</td>
+                                <td>Roberto Alves</td>
+                                <td>Cesta Básica</td>
+                                <td>Alimentos</td>
+                                <td>19/05/2025</td>
+                                <td><span class="status status-disponivel">Disponível</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-sm">Ver Detalhes</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#2153</td>
+                                <td>Empresa XYZ</td>
+                                <td>Kit Material Escolar</td>
+                                <td>Material Escolar</td>
+                                <td>18/05/2025</td>
+                                <td><span class="status status-reservado">Reservado</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-sm">Ver Detalhes</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#2152</td>
+                                <td>Patrícia Souza</td>
+                                <td>Roupas de Inverno</td>
+                                <td>Roupas</td>
+                                <td>18/05/2025</td>
+                                <td><span class="status status-disponivel">Disponível</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-sm">Ver Detalhes</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#2151</td>
+                                <td>Marcos Oliveira</td>
+                                <td>Mesa e Cadeiras</td>
+                                <td>Móveis</td>
+                                <td>17/05/2025</td>
+                                <td><span class="status status-entregue">Entregue</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-sm">Ver Detalhes</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#2150</td>
+                                <td>Farmácia Saúde</td>
+                                <td>Kit de Medicamentos</td>
+                                <td>Medicamentos</td>
+                                <td>17/05/2025</td>
+                                <td><span class="status status-entregue">Entregue</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-sm">Ver Detalhes</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Alternar tema (botão da sidebar)
+        document.getElementById("theme-toggle-sidebar").addEventListener("click", function() {
+            let currentTheme = document.documentElement.getAttribute("data-theme");
+            let targetTheme = "light";
+            
+            if (currentTheme === "light") {
+                targetTheme = "dark";
+                this.innerHTML = '<i class="fas fa-sun"></i> Alternar Tema';
+            } else {
+                this.innerHTML = '<i class="fas fa-moon"></i> Alternar Tema';
+            }
+            
+            document.documentElement.setAttribute("data-theme", targetTheme);
+            localStorage.setItem("theme", targetTheme);
+        });
+        
+        // Atualizar ícone do botão de tema
+        window.addEventListener("DOMContentLoaded", function() {
+            const themeToggleSidebar = document.getElementById("theme-toggle-sidebar");
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            
+            if (currentTheme === "dark") {
+                themeToggleSidebar.innerHTML = '<i class="fas fa-sun"></i> Alternar Tema';
+            } else {
+                themeToggleSidebar.innerHTML = '<i class="fas fa-moon"></i> Alternar Tema';
+            }
+            
+            // Verificar tipo de usuário para personalizar o dashboard
+            const userType = localStorage.getItem("userType") || "administrador";
+            const userName = localStorage.getItem("userName") || "Administrador";
+            
+            // Atualizar nome do usuário
+            document.getElementById("user-name").textContent = userName;
+            
+            // Personalizar sidebar com base no tipo de usuário
+            if (userType === "doador") {
+                // Mostrar apenas itens relevantes para doadores
+                document.querySelector(".user-avatar img").src = "../assets/avatar-doador.jpg";
+            } else if (userType === "beneficiario") {
+                // Mostrar apenas itens relevantes para beneficiários
+                document.querySelector(".user-avatar img").src = "../assets/avatar-beneficiario.jpg";
+            } else if (userType === "organizacao") {
+                // Mostrar apenas itens relevantes para organizações
+                document.querySelector(".user-avatar img").src = "../assets/avatar-organizacao.jpg";
+            }
+            
+            // Adicionar eventos aos botões de ação
+            document.querySelectorAll(".btn-secondary").forEach(function(button) {
+                button.addEventListener("click", function() {
+                    const row = this.closest("tr");
+                    const id = row.querySelector("td:first-child").textContent;
+                    
+                    alert(`Solicitação ${id} aprovada com sucesso!`);
+                    row.querySelector(".status").className = "status status-approved";
+                    row.querySelector(".status").textContent = "Aprovada";
+                    row.querySelector(".action-buttons").innerHTML = '<button class="btn btn-sm">Ver Detalhes</button>';
+                });
+            });
+            
+            document.querySelectorAll(".btn-outline").forEach(function(button) {
+                button.addEventListener("click", function() {
+                    const row = this.closest("tr");
+                    const id = row.querySelector("td:first-child").textContent;
+                    
+                    const motivo = prompt(`Por favor, informe o motivo da recusa da solicitação ${id}:`);
+                    
+                    if (motivo) {
+                        alert(`Solicitação ${id} recusada com sucesso!`);
+                        row.querySelector(".status").className = "status status-rejected";
+                        row.querySelector(".status").textContent = "Recusada";
+                        row.querySelector(".action-buttons").innerHTML = '<button class="btn btn-sm">Ver Detalhes</button>';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação - Ong da Rosinha</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script>
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+        
+        const currentTheme = localStorage.getItem("theme");
+        if (currentTheme === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+        } else if (currentTheme === "light") {
+            document.documentElement.setAttribute("data-theme", "light");
+        } else if (prefersDarkScheme.matches) {
+            document.documentElement.setAttribute("data-theme", "dark");
+        }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="../assets/logo.png" alt="Ong da Rosinha Logo">
+                <h1>Ong da Rosinha</h1>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="home.html">Início</a></li>
+                    <li><a href="doacoes.html">Doações</a></li>
+                    <li><a href="solicitar.html">Solicitar Ajuda</a></li>
+                    <li><a href="login.html" class="btn btn-outline">Entrar</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Confirmação Section -->
+    <section class="confirmation-section">
+        <div class="container">
+            <div class="confirmation-container card">
+                <div class="confirmation-icon success">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                
+                <h2 class="confirmation-title">Operação Realizada com Sucesso!</h2>
+                
+                <div class="confirmation-message">
+                    <p id="confirmation-text">Sua solicitação foi enviada com sucesso. Nossa equipe analisará seu pedido e entrará em contato em breve.</p>
+                </div>
+                
+                <div class="confirmation-details" id="confirmation-details">
+                    <!-- Detalhes da operação serão inseridos aqui via JavaScript -->
+                </div>
+                
+                <div class="confirmation-actions">
+                    <a href="home.html" class="btn">Voltar para a Página Inicial</a>
+                    <a href="dashboard.html" class="btn btn-secondary" id="dashboard-btn">Ir para o Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Ong da Rosinha</h3>
+                    <p>Conectando quem precisa com quem pode ajudar.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="home.html">Início</a></li>
+                        <li><a href="doacoes.html">Doações</a></li>
+                        <li><a href="solicitar.html">Solicitar Ajuda</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <ul>
+                         <li><i class="fas fa-map-marker-alt"></i> Rua Mesquita, 125 - NOva Iguaçu</li>
+                        <li><i class="fas fa-phone"></i> (21) 95933-6293</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Ong da Rosinha. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Alternar tema
+        document.getElementById("theme-toggle").addEventListener("click", function() {
+            let currentTheme = document.documentElement.getAttribute("data-theme");
+            let targetTheme = "light";
+            
+            if (currentTheme === "light") {
+                targetTheme = "dark";
+                this.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                this.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+            
+            document.documentElement.setAttribute("data-theme", targetTheme);
+            localStorage.setItem("theme", targetTheme);
+        });
+        
+        // Atualizar ícone do botão de tema
+        window.addEventListener("DOMContentLoaded", function() {
+            const themeToggle = document.getElementById("theme-toggle");
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            
+            if (currentTheme === "dark") {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+            
+            // Verificar se o usuário está logado
+            const isLoggedIn = localStorage.getItem("isLoggedIn");
+            
+            // Mostrar/ocultar botão de dashboard
+            if (isLoggedIn === "true") {
+                document.getElementById("dashboard-btn").style.display = "inline-block";
+            } else {
+                document.getElementById("dashboard-btn").style.display = "none";
+            }
+            
+            // Obter parâmetros da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const tipo = urlParams.get('tipo');
+            const status = urlParams.get('status');
+            
+            // Personalizar mensagem com base no tipo e status
+            if (tipo === "solicitacao" && status === "sucesso") {
+                document.getElementById("confirmation-text").textContent = "Sua solicitação foi enviada com sucesso. Nossa equipe analisará seu pedido e entrará em contato em breve.";
+                
+                // Adicionar detalhes da solicitação (simulação)
+                document.getElementById("confirmation-details").innerHTML = `
+                    <div class="detail-item">
+                        <span class="detail-label">Número da Solicitação:</span>
+                        <span class="detail-value">#${Math.floor(Math.random() * 10000)}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Data:</span>
+                        <span class="detail-value">${new Date().toLocaleDateString()}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Status:</span>
+                        <span class="detail-value status-pending">Pendente</span>
+                    </div>
+                `;
+            } else if (tipo === "doacao" && status === "sucesso") {
+                document.getElementById("confirmation-text").textContent = "Sua doação foi cadastrada com sucesso. Ela já está disponível para quem precisa.";
+                
+                // Adicionar detalhes da doação (simulação)
+                document.getElementById("confirmation-details").innerHTML = `
+                    <div class="detail-item">
+                        <span class="detail-label">Número da Doação:</span>
+                        <span class="detail-value">#${Math.floor(Math.random() * 10000)}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Data:</span>
+                        <span class="detail-value">${new Date().toLocaleDateString()}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Status:</span>
+                        <span class="detail-value status-disponivel">Disponível</span>
+                    </div>
+                `;
+            } else if (tipo === "cadastro" && status === "sucesso") {
+                document.getElementById("confirmation-text").textContent = "Seu cadastro foi realizado com sucesso. Agora você já pode acessar todas as funcionalidades da plataforma.";
+                
+                // Adicionar detalhes do cadastro (simulação)
+                document.getElementById("confirmation-details").innerHTML = `
+                    <div class="detail-item">
+                        <span class="detail-label">Usuário:</span>
+                        <span class="detail-value">${localStorage.getItem("userName") || "Novo Usuário"}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Tipo de Conta:</span>
+                        <span class="detail-value">${localStorage.getItem("userType") || "Usuário"}</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Data:</span>
+                        <span class="detail-value">${new Date().toLocaleDateString()}</span>
+                    </div>
+                `;
+            } else {
+                // Mensagem genérica para outros casos
+                document.getElementById("confirmation-text").textContent = "Operação realizada com sucesso!";
+                document.getElementById("confirmation-details").style.display = "none";
+            }
+            
+            // Se o status não for sucesso, mostrar mensagem de erro
+            if (status === "erro") {
+                document.querySelector(".confirmation-icon").classList.remove("success");
+                document.querySelector(".confirmation-icon").classList.add("error");
+                document.querySelector(".confirmation-icon i").classList.remove("fa-check-circle");
+                document.querySelector(".confirmation-icon i").classList.add("fa-times-circle");
+                document.querySelector(".confirmation-title").textContent = "Ocorreu um Erro";
+                document.getElementById("confirmation-text").textContent = "Não foi possível completar a operação. Por favor, tente novamente mais tarde.";
+                document.getElementById("confirmation-details").style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

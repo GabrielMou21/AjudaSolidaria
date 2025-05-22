@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ong da Rosinha - Conectando Doadores e Beneficiários</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script>
+    
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+        
+        const currentTheme = localStorage.getItem("theme");
+        if (currentTheme === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+        } else if (currentTheme === "light") {
+            document.documentElement.setAttribute("data-theme", "light");
+        } else if (prefersDarkScheme.matches) {
+            document.documentElement.setAttribute("data-theme", "dark");
+        }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="../assets/logo.png" alt="Ong da Rosinha Logo">
+                <h1>Ong da Rosinha</h1>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="home.html" class="active">Início</a></li>
+                    <li><a href="doacoes.html">Doações</a></li>
+                    <li><a href="solicitar.html">Solicitar Ajuda</a></li>
+                    <li><a href="login.html" class="btn btn-outline">Entrar</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2 class="slide-up">Conectando quem precisa com quem pode ajudar</h2>
+            <p class="slide-up">A Ong da rosinha é uma plataforma que conecta doadores, beneficiários e voluntarios para facilitar a doação, arrecadação e distribuição de recursos para comunidades carentes.</p>
+            <div class="hero-buttons">
+                <a href="doacoes.html" class="btn slide-up">Quero Doar</a>
+                <a href="solicitar.html" class="btn btn-secondary slide-up">Preciso de Ajuda</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como Funciona -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Como Funciona</h2>
+            <div class="steps-container">
+                <div class="step-card card">
+                    <div class="card-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3 class="card-title">Cadastre-se</h3>
+                    <p class="card-text">Crie sua conta como doador, beneficiário ou voluntario em poucos minutos.</p>
+                </div>
+                <div class="step-card card">
+                    <div class="card-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="card-title">Doe ou Solicite</h3>
+                    <p class="card-text">Cadastre itens para doação ou solicite ajuda de acordo com suas necessidades.</p>
+                </div>
+                <div class="step-card card">
+                    <div class="card-icon">
+                        <i class="fas fa-people-arrows"></i>
+                    </div>
+                    <h3 class="card-title">Conecte-se</h3>
+                </div>
+                <div class="step-card card">
+                    <div class="card-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 class="card-title">Faça a Diferença</h3>
+                    <p class="card-text">Acompanhe o impacto positivo das suas doações na vida de quem precisa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categorias de Doação -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">O que você pode doar?</h2>
+            <div class="categories-container">
+                <div class="category-card card">
+                    <img src="../assets/img/cesta-basica.webp" alt="Alimentos" class="card-img">
+                    <h3 class="card-title">Alimentos</h3>
+                    <p class="card-text">Alimentos não perecíveis, cestas básicas e outros itens alimentícios.</p>
+                    <a href="doacoes.html?categoria=1" class="btn btn-outline">Doar Alimentos</a>
+                </div>
+                <div class="category-card card">
+                    <img src="../assets/img/roupas-inverno.png" alt="Roupas" class="card-img">
+                    <h3 class="card-title">Roupas</h3>
+                    <p class="card-text">Roupas, calçados, agasalhos e outros itens de vestuário.</p>
+                    <a href="doacoes.html?categoria=2" class="btn btn-outline">Doar Roupas</a>
+                </div>
+                <div class="category-card card">
+                    <img src="../assets/img/moveis.webp" alt="Móveis" class="card-img">
+                    <h3 class="card-title">Móveis</h3>
+                    <p class="card-text">Móveis, eletrodomésticos e utensílios para o lar.</p>
+                    <a href="doacoes.html?categoria=3" class="btn btn-outline">Doar Móveis</a>
+                </div>
+                <div class="category-card card">
+                    <img src="../assets/img/material-escolar.webp" alt="Material Escolar" class="card-img">
+                    <h3 class="card-title">Material Escolar</h3>
+                    <p class="card-text">Cadernos, lápis, mochilas e outros materiais escolares.</p>
+                    <a href="doacoes.html?categoria=4" class="btn btn-outline">Doar Material</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Chamada para Ação -->
+    <section class="cta">
+        <div class="container">
+            <h2>Faça parte dessa corrente de solidariedade</h2>
+            <p>Junte-se a milhares de pessoas que estão fazendo a diferença na vida de quem mais precisa.</p>
+            <div class="cta-buttons">
+                <a href="cadastro.html" class="btn">Cadastre-se Agora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Ong da Rosinha</h3>
+                    <p>Conectando quem precisa com quem pode ajudar.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="home.html">Início</a></li>
+                        <li><a href="doacoes.html">Doações</a></li>
+                        <li><a href="solicitar.html">Solicitar Ajuda</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <ul>
+                         <li><i class="fas fa-map-marker-alt"></i> Rua Mesquita, 125 - Nova Iguaçu</li>
+                        <li><i class="fas fa-phone"></i> (21) 95933-6293</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Ong da Rosinha. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Alternar tema
+        document.getElementById("theme-toggle").addEventListener("click", function() {
+            let currentTheme = document.documentElement.getAttribute("data-theme");
+            let targetTheme = "light";
+            
+            if (currentTheme === "light") {
+                targetTheme = "dark";
+                this.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                this.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+            
+            document.documentElement.setAttribute("data-theme", targetTheme);
+            localStorage.setItem("theme", targetTheme);
+        });
+        
+        // Atualizar ícone do botão de tema
+        window.addEventListener("DOMContentLoaded", function() {
+            const themeToggle = document.getElementById("theme-toggle");
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            
+            if (currentTheme === "dark") {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+    </script>
+</body>
+</html>

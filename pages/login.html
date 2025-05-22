@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Ong da Rosinha</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script>
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+        
+        const currentTheme = localStorage.getItem("theme");
+        if (currentTheme === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+        } else if (currentTheme === "light") {
+            document.documentElement.setAttribute("data-theme", "light");
+        } else if (prefersDarkScheme.matches) {
+            document.documentElement.setAttribute("data-theme", "dark");
+        }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="../assets/logo.png" alt="Ong da Rosinha Logo">
+                <h1>Ong da Rosinha</h1>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="home.html">Início</a></li>
+                    <li><a href="doacoes.html">Doações</a></li>
+                    <li><a href="solicitar.html">Solicitar Ajuda</a></li>
+                    <li><a href="login.html" class="btn btn-outline active">Entrar</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Login Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-card card">
+                    <h2 class="auth-title">Entrar</h2>
+                    <p class="auth-subtitle">Acesse sua conta para continuar</p>
+                    
+                    <form id="login-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="Seu email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="senha" class="form-label">Senha</label>
+                            <div class="password-input">
+                                <input type="password" id="senha" class="form-control" placeholder="Sua senha" required>
+                                <button type="button" class="password-toggle">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group form-check">
+                            <input type="checkbox" id="lembrar" class="form-check-input">
+                            <label for="lembrar" class="form-check-label">Lembrar de mim</label>
+                            <a href="recuperar-senha.html" class="forgot-password">Esqueceu a senha?</a>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-block">Entrar</button>
+                        </div>
+                    </form>
+                    
+                    <div class="auth-footer">
+                        <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
+                    </div>
+                </div>
+                
+                <div class="auth-image">
+    <div class="auth-image-text">
+        <img src="../assets/img/login-image.webp" alt="Pessoas se ajudando" class="auth-icon">
+        <div class="auth-text">
+            <h3>Faça parte dessa corrente de solidariedade</h3>
+            <p>Junte-se a milhares de pessoas que estão fazendo a diferença na vida de quem mais precisa.</p>
+        </div>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Ong da Rosinha</h3>
+                    <p>Conectando quem precisa com quem pode ajudar.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="home.html">Início</a></li>
+                        <li><a href="doacoes.html">Doações</a></li>
+                        <li><a href="solicitar.html">Solicitar Ajuda</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <ul>
+                         <li><i class="fas fa-map-marker-alt"></i> Rua Mesquita, 125 - NOva Iguaçu</li>
+                        <li><i class="fas fa-phone"></i> (21) 95933-6293</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Ong da Rosinha. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Alternar tema
+        document.getElementById("theme-toggle").addEventListener("click", function() {
+            let currentTheme = document.documentElement.getAttribute("data-theme");
+            let targetTheme = "light";
+            
+            if (currentTheme === "light") {
+                targetTheme = "dark";
+                this.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                this.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+            
+            document.documentElement.setAttribute("data-theme", targetTheme);
+            localStorage.setItem("theme", targetTheme);
+        });
+        
+        // Atualizar ícone do botão de tema
+        window.addEventListener("DOMContentLoaded", function() {
+            const themeToggle = document.getElementById("theme-toggle");
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            
+            if (currentTheme === "dark") {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+        
+        // Mostrar/ocultar senha
+        document.querySelector(".password-toggle").addEventListener("click", function() {
+            const passwordInput = document.getElementById("senha");
+            const icon = this.querySelector("i");
+            
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        });
+        
+        // Envio do formulário
+        document.getElementById("login-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
+            
+            //implementar a integração com o backend
+            console.log("Login com:", email, senha);
+            
+            // Simulação de login bem-sucedido
+            alert("Login realizado com sucesso! Redirecionando...");
+            // Redirecionar com base no tipo de usuário
+            window.location.href = "dashboard.html";
+        });
+    </script>
+</body>
+</html>

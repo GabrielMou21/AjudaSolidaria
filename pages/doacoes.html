@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doações - Ond da Rosinha</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <script>
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+        
+        const currentTheme = localStorage.getItem("theme");
+        if (currentTheme === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+        } else if (currentTheme === "light") {
+            document.documentElement.setAttribute("data-theme", "light");
+        } else if (prefersDarkScheme.matches) {
+            document.documentElement.setAttribute("data-theme", "dark");
+        }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="../assets/logo.png" alt="Ong da Rosinha Logo">
+                <h1>Ong da Rosinha</h1>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="home.html">Início</a></li>
+                    <li><a href="doacoes.html" class="active">Doações</a></li>
+                    <li><a href="solicitar.html">Solicitar Ajuda</a></li>
+                    <li><a href="login.html" class="btn btn-outline">Entrar</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Doações Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h2>Doações</h2>
+            <p>Cadastre itens para doação ou encontre itens disponíveis para ajudar quem precisa.</p>
+        </div>
+    </section>
+
+    <!-- Filtros e Busca -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-container card">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Buscar itens...">
+                    <button id="search-button"><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="categoria-filter">Categoria</label>
+                        <select id="categoria-filter" class="form-control">
+                            <option value="">Todas as categorias</option>
+                            <option value="1">Alimentos</option>
+                            <option value="2">Roupas</option>
+                            <option value="3">Móveis</option>
+                            <option value="4">Material Escolar</option>
+                            <option value="5">Brinquedos</option>
+                            <option value="6">Medicamentos</option>
+                            <option value="7">Higiene Pessoal</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="status-filter">Status</label>
+                        <select id="status-filter" class="form-control">
+                            <option value="">Todos</option>
+                            <option value="disponivel" selected>Disponível</option>
+                            <option value="reservado">Reservado</option>
+                            <option value="entregue">Entregue</option>
+                        </select>
+                    </div>
+                    
+                    <button id="filter-button" class="btn btn-sm">Filtrar</button>
+                    <button id="clear-filters" class="btn btn-sm btn-outline">Limpar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cadastrar Doação (visível apenas para usuários logados como doadores) -->
+    <section class="cadastrar-doacao-section">
+        <div class="container">
+            <div class="section-header">
+                <h3>Cadastrar Nova Doação</h3>
+                <p>Compartilhe o que você não usa mais e ajude quem precisa.</p>
+            </div>
+            
+            <div class="cadastrar-doacao-container card">
+                <form id="doacao-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nome-item" class="form-label">Nome do Item</label>
+                            <input type="text" id="nome-item" class="form-control" placeholder="Ex: Cesta Básica, Casaco de Inverno" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="categoria-item" class="form-label">Categoria</label>
+                            <select id="categoria-item" class="form-control" required>
+                                <option value="">Selecione uma categoria</option>
+                                <option value="1">Alimentos</option>
+                                <option value="2">Roupas</option>
+                                <option value="3">Móveis</option>
+                                <option value="4">Material Escolar</option>
+                                <option value="5">Brinquedos</option>
+                                <option value="6">Medicamentos</option>
+                                <option value="7">Higiene Pessoal</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="quantidade-item" class="form-label">Quantidade</label>
+                            <input type="number" id="quantidade-item" class="form-control" min="1" value="1" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="descricao-item" class="form-label">Descrição</label>
+                        <textarea id="descricao-item" class="form-control" rows="3" placeholder="Descreva o item, estado de conservação, etc." required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="estado-conservacao" class="form-label">Estado de Conservação</label>
+                            <select id="estado-conservacao" class="form-control" required>
+                                <option value="">Selecione</option>
+                                <option value="Novo">Novo</option>
+                                <option value="Seminovo">Seminovo</option>
+                                <option value="Usado em bom estado">Usado em bom estado</option>
+                                <option value="Usado">Usado</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="imagem-item" class="form-label">Imagem (opcional)</label>
+                            <input type="file" id="imagem-item" class="form-control" accept="image/*">
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn">Cadastrar Doação</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lista de Doações -->
+    <section class="doacoes-list-section">
+        <div class="container">
+            <div class="section-header">
+                <h3>Itens Disponíveis para Doação</h3>
+                <p>Encontre itens disponíveis para ajudar quem precisa.</p>
+            </div>
+            
+            <div class="doacoes-grid">
+                <!-- Item 1 -->
+                <div class="doacao-card card">
+                    <div class="doacao-img">
+                        <img src="../assets/img/cesta-basica.webp" alt="Cesta Básica" class="auth-icon">
+                        <span class="status-badge status-disponivel">Disponível</span>
+                    </div>
+                    <div class="doacao-content">
+                        <h4>Cesta Básica</h4>
+                        <p class="doacao-categoria"><i class="fas fa-tag"></i> Alimentos</p>
+                        <p class="doacao-descricao">Cesta básica completa com arroz, feijão, óleo, macarrão, açúcar, café e outros itens essenciais.</p>
+                        <div class="doacao-meta">
+                            <span><i class="fas fa-box"></i> Quantidade: 2</span>
+                            <span><i class="fas fa-star"></i> Estado: Novo</span>
+                        </div>
+                        <div class="doacao-actions">
+                            <a href="doacao-detalhes.html?id=1" class="btn btn-sm">Ver Detalhes</a>
+                            <button class="btn btn-sm btn-secondary solicitar-doacao" data-id="1">Solicitar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="doacao-card card">
+                    <div class="doacao-img">
+                        <img src="../assets/img/roupas-inverno.png" alt="Roupas de Inverno" class="auth-icon">
+                        <span class="status-badge status-disponivel">Disponível</span>
+                    </div>
+                    <div class="doacao-content">
+                        <h4>Roupas de Inverno</h4>
+                        <p class="doacao-categoria"><i class="fas fa-tag"></i> Roupas</p>
+                        <p class="doacao-descricao">Conjunto de roupas de inverno incluindo casacos, blusas e calças. Tamanhos variados para adultos.</p>
+                        <div class="doacao-meta">
+                            <span><i class="fas fa-box"></i> Quantidade: 5</span>
+                            <span><i class="fas fa-star"></i> Estado: Usado em bom estado</span>
+                        </div>
+                        <div class="doacao-actions">
+                            <a href="doacao-detalhes.html?id=2" class="btn btn-sm">Ver Detalhes</a>
+                            <button class="btn btn-sm btn-secondary solicitar-doacao" data-id="2">Solicitar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="doacao-card card">
+                    <div class="doacao-img">
+                        <img src="../assets/img/material-escolar.webp" alt="Kit Material Escolar" class="auth-icon">
+                        <span class="status-badge status-disponivel">Disponível</span>
+                    </div>
+                    <div class="doacao-content">
+                        <h4>Kit Material Escolar</h4>
+                        <p class="doacao-categoria"><i class="fas fa-tag"></i> Material Escolar</p>
+                        <p class="doacao-descricao">Kit completo com cadernos, lápis, canetas, borrachas, réguas e outros materiais escolares.</p>
+                        <div class="doacao-meta">
+                            <span><i class="fas fa-box"></i> Quantidade: 10</span>
+                            <span><i class="fas fa-star"></i> Estado: Novo</span>
+                        </div>
+                        <div class="doacao-actions">
+                            <a href="doacao-detalhes.html?id=3" class="btn btn-sm">Ver Detalhes</a>
+                            <button class="btn btn-sm btn-secondary solicitar-doacao" data-id="3">Solicitar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Item 4 -->
+                <div class="doacao-card card">
+                    <div class="doacao-img">
+                        <img src="../assets/img/brinquedos.webp" alt="Brinquedos Infantis" class="auth-icon">
+                        <span class="status-badge status-disponivel">Disponível</span>
+                    </div>
+                    <div class="doacao-content">
+                        <h4>Brinquedos Infantis</h4>
+                        <p class="doacao-categoria"><i class="fas fa-tag"></i> Brinquedos</p>
+                        <p class="doacao-descricao">Conjunto de brinquedos educativos para crianças de 3 a 8 anos. Inclui jogos, bonecas e carrinhos.</p>
+                        <div class="doacao-meta">
+                            <span><i class="fas fa-box"></i> Quantidade: 15</span>
+                            <span><i class="fas fa-star"></i> Estado: Seminovo</span>
+                        </div>
+                        <div class="doacao-actions">
+                            <a href="doacao-detalhes.html?id=4" class="btn btn-sm">Ver Detalhes</a>
+                            <button class="btn btn-sm btn-secondary solicitar-doacao" data-id="4">Solicitar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Item 5 -->
+                <div class="doacao-card card">
+                    <div class="doacao-img">
+                        <img src="../assets/img/moveis.webp" alt="Mesa e Cadeiras" class="auth-icon">
+                        <span class="status-badge status-disponivel">Disponível</span>
+                    </div>
+                    <div class="doacao-content">
+                        <h4>Mesa e Cadeiras</h4>
+                        <p class="doacao-categoria"><i class="fas fa-tag"></i> Móveis</p>
+                        <p class="doacao-descricao">Mesa de jantar com 4 cadeiras. Em bom estado de conservação, apenas com pequenos arranhões.</p>
+                        <div class="doacao-meta">
+                            <span><i class="fas fa-box"></i> Quantidade: 1</span>
+                            <span><i class="fas fa-star"></i> Estado: Usado em bom estado</span>
+                        </div>
+                        <div class="doacao-actions">
+                            <a href="doacao-detalhes.html?id=5" class="btn btn-sm">Ver Detalhes</a>
+                            <button class="btn btn-sm btn-secondary solicitar-doacao" data-id="5">Solicitar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Item 6 -->
+                <div class="doacao-card card">
+                    <div class="doacao-img">
+                        <img src="../assets/img/kit-higiene.webp" alt="Kit de Higiene Pessoal" class="auth-icon">
+                        <span class="status-badge status-disponivel">Disponível</span>
+                    </div>
+                    <div class="doacao-content">
+                        <h4>Kit de Higiene Pessoal</h4>
+                        <p class="doacao-categoria"><i class="fas fa-tag"></i> Higiene Pessoal</p>
+                        <p class="doacao-descricao">Kit com sabonete, shampoo, condicionador, escova de dentes, pasta de dentes e outros itens de higiene.</p>
+                        <div class="doacao-meta">
+                            <span><i class="fas fa-box"></i> Quantidade: 20</span>
+                            <span><i class="fas fa-star"></i> Estado: Novo</span>
+                        </div>
+                        <div class="doacao-actions">
+                            <a href="doacao-detalhes.html?id=6" class="btn btn-sm">Ver Detalhes</a>
+                            <button class="btn btn-sm btn-secondary solicitar-doacao" data-id="6">Solicitar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <button class="pagination-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <button class="pagination-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Ong da Rosinha</h3>
+                    <p>Conectando quem precisa com quem pode ajudar.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="home.html">Início</a></li>
+                        <li><a href="doacoes.html">Doações</a></li>
+                        <li><a href="solicitar.html">Solicitar Ajuda</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Rua Mesquita, 125 - Nova Iguaçu</li>
+                        <li><i class="fas fa-phone"></i> (21) 95933-6293</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Ong da Rosinha. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Alternar tema
+        document.getElementById("theme-toggle").addEventListener("click", function() {
+            let currentTheme = document.documentElement.getAttribute("data-theme");
+            let targetTheme = "light";
+            
+            if (currentTheme === "light") {
+                targetTheme = "dark";
+                this.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                this.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+            
+            document.documentElement.setAttribute("data-theme", targetTheme);
+            localStorage.setItem("theme", targetTheme);
+        });
+        
+        // Atualizar ícone do botão de tema
+        window.addEventListener("DOMContentLoaded", function() {
+            const themeToggle = document.getElementById("theme-toggle");
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            
+            if (currentTheme === "dark") {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+            
+            // Verificar se o usuário está logado como doador
+            const isLoggedIn = localStorage.getItem("isLoggedIn");
+            const userType = localStorage.getItem("userType");
+            
+            // Mostrar/ocultar seção de cadastro de doação
+            const cadastrarDoacaoSection = document.querySelector(".cadastrar-doacao-section");
+            if (isLoggedIn === "true" && userType === "doador") {
+                cadastrarDoacaoSection.style.display = "block";
+            } else {
+                cadastrarDoacaoSection.style.display = "none";
+            }
+            
+            // Botões de solicitar doação
+            document.querySelectorAll(".solicitar-doacao").forEach(function(button) {
+                button.addEventListener("click", function() {
+                    const itemId = this.getAttribute("data-id");
+                    
+                    if (isLoggedIn === "true" && (userType === "beneficiario" || userType === "organizacao")) {
+                        window.location.href = `solicitar.html?item=${itemId}`;
+                    } else {
+                        alert("Você precisa estar logado como beneficiário ou organização para solicitar doações.");
+                        window.location.href = "login.html";
+                    }
+                });
+            });
+        });
+        
+        // Filtrar doações
+        document.getElementById("filter-button").addEventListener("click", function() {
+            const searchTerm = document.getElementById("search-input").value;
+            const categoria = document.getElementById("categoria-filter").value;
+            const status = document.getElementById("status-filter").value;
+            
+            // Aqui será implementada a integração com o backend para filtrar os itens
+            console.log("Filtrar por:", { searchTerm, categoria, status });
+            
+            // Simulação de filtro (apenas para demonstração)
+            alert("Filtros aplicados! Esta funcionalidade será integrada com o backend.");
+        });
+        
+        // Limpar filtros
+        document.getElementById("clear-filters").addEventListener("click", function() {
+            document.getElementById("search-input").value = "";
+            document.getElementById("categoria-filter").value = "";
+            document.getElementById("status-filter").value = "disponivel";
+            
+            // Aqui será implementada a integração com o backend para resetar os filtros
+            console.log("Filtros limpos");
+            
+            // Simulação de reset (apenas para demonstração)
+            alert("Filtros limpos! Esta funcionalidade será integrada com o backend.");
+        });
+        
+        // Envio do formulário de doação
+        document.getElementById("doacao-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                nome: document.getElementById("nome-item").value,
+                categoria_id: document.getElementById("categoria-item").value,
+                quantidade: document.getElementById("quantidade-item").value,
+                descricao: document.getElementById("descricao-item").value,
+                estado_conservacao: document.getElementById("estado-conservacao").value,
+                // A imagem seria tratada com upload para o servidor
+            };
+            
+            console.log("Cadastro de doação:", formData);
+            
+            // Simulação de cadastro bem-sucedido
+            alert("Doação cadastrada com sucesso!");
+            this.reset();
+        });
+    </script>
+</body>
+</html>
