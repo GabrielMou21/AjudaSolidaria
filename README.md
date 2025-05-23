@@ -39,5 +39,70 @@ Nosso site é simples e intuitivo, basta seguir essas indicações:
   - Relatórios e estatísticas
 - **Área do Beneficiário**: Acompanhamento do andamento da solicitação e histórico
 - **Página de Confirmação**: Feedback após envio de formulários ou conclusão de ações
+
+### Estrutura de pastas
+ajuda-solidaria/
+│
+├── assets/                  # Recursos estáticos
+│   ├── images/              # Imagens do site
+│   │   ├── logo.png
+│   │   ├── alimentos.jpg
+│   │   ├── roupas.jpg
+│   │   ├── moveis.jpg
+│   │   └── material-escolar.jpg
+│   └── icons/               # Ícones utilizados
+│
+├── css/                     # Arquivos de estilo
+│   └── styles.css           # Estilos principais
+│
+├── js/                      # Scripts JavaScript
+│   ├── theme.js             # Controle de tema claro/escuro
+│   ├── auth.js              # Autenticação
+│   └── api.js               # Comunicação com o backend
+│
+├── pages/                   # Páginas HTML secundárias
+│   ├── home.html
+│   ├── cadastro.html
+│   ├── login.html
+│   ├── doacoes.html
+│   ├── solicitar.html
+│   ├── dashboard.html
+│   └── resposta.html
+│
+├── models/                  # Modelos de dados
+│   └── db.js                # Configuração do banco de dados
+│
+├── controllers/             # Controladores
+│   ├── auth.controller.js
+│   ├── donation.controller.js
+│   ├── request.controller.js
+│   ├── category.controller.js
+│   ├── item.controller.js
+│   └── event.controller.js
+│
+├── routes/                  # Rotas da API
+│   ├── auth.routes.js
+│   ├── donation.routes.js
+│   ├── request.routes.js
+│   ├── category.routes.js
+│   ├── item.routes.js
+│   └── event.routes.js
+│
+├── middleware/              # Middlewares
+│   └── auth.middleware.js   # Middleware de autenticação
+│
+├── database/                # Scripts de banco de dados
+│   └── esquema.sql          # Esquema SQL (para MySQL)
+│
+├── node_modules/            # Dependências (gerado pelo npm)
+│
+├── .env                     # Variáveis de ambiente
+├── .gitignore               # Arquivos ignorados pelo git
+├── banco.db                 # Banco de dados SQLite
+├── index.html               # Página principal
+├── package.json             # Configuração do projeto
+├── package-lock.json        # Versões exatas das dependências
+├── README.md                # Documentação
+└── server.js                # Ponto de entrada do servidor
 - 
 # site
