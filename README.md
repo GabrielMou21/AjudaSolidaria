@@ -43,67 +43,56 @@ Nosso site é simples e intuitivo, basta seguir essas indicações:
 ### Estrutura de pastas
 
 ajuda-solidaria/
-│
-├── assets/             
-│   ├── images/           
+├── assets/
+│   ├── images/
 │   │   ├── logo.png
 │   │   ├── alimentos.jpg
 │   │   ├── roupas.jpg
 │   │   ├── moveis.jpg
 │   │   └── material-escolar.jpg
-│   └── icons/             
-│
-├── css/                    
-│   └── styles.css        
-│
-├── js/                  
-│   ├── theme.js         
-│   ├── auth.js             
-│   └── api.js             
-│
-├── pages/               
+│   └── icons/
+├── css/
+│   └── styles.css
+├── js/
+│   ├── theme.js
+│   ├── auth.js
+│   └── api.js
+├── pages/
 │   ├── home.html
-      ├── index.html
 │   ├── cadastro.html
 │   ├── login.html
 │   ├── doacoes.html
 │   ├── solicitar.html
 │   ├── dashboard.html
 │   └── resposta.html
-│
-├── models/               
-│   └── db.js     
-│
-├── controllers/         
+├── models/
+│   └── db.js
+├── controllers/
 │   ├── auth.controller.js
 │   ├── donation.controller.js
 │   ├── request.controller.js
 │   ├── category.controller.js
 │   ├── item.controller.js
 │   └── event.controller.js
-│
-├── routes/                 
+├── routes/
 │   ├── auth.routes.js
 │   ├── donation.routes.js
 │   ├── request.routes.js
 │   ├── category.routes.js
 │   ├── item.routes.js
 │   └── event.routes.js
-│
-├── middleware/        
-│   └── auth.middleware.js  
-│
-├── database/               
-│   └── esquema.sql      
-│
-├── node_modules/       
-│
-├── .env            
-├── .gitignore         
-├── banco.db       
-├── package.json           
-├── package-lock.json     
-├── README.md                
-└── server.js                
+├── middleware/
+│   └── auth.middleware.js
+├── database/
+│   └── esquema.sql
+├── node_modules/
+├── .env
+├── .gitignore
+├── banco.db
+├── index.html
+├── package.json
+├── package-lock.json
+├── README.md
+└── server.js
 - 
 # site
