@@ -42,6 +42,7 @@ Nosso site é simples e intuitivo, basta seguir essas indicações:
 
 ### Estrutura de pastas
 
+```
 ajuda-solidaria/
 ├── assets/
 │   ├── images/
@@ -94,5 +95,6 @@ ajuda-solidaria/
 ├── package-lock.json
 ├── README.md
 └── server.js
+```
 - 
 # site
