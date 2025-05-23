@@ -41,27 +41,29 @@ Nosso site é simples e intuitivo, basta seguir essas indicações:
 - **Página de Confirmação**: Feedback após envio de formulários ou conclusão de ações
 
 ### Estrutura de pastas
+
 ajuda-solidaria/
 │
-├── assets/                  # Recursos estáticos
-│   ├── images/              # Imagens do site
+├── assets/             
+│   ├── images/           
 │   │   ├── logo.png
 │   │   ├── alimentos.jpg
 │   │   ├── roupas.jpg
 │   │   ├── moveis.jpg
 │   │   └── material-escolar.jpg
-│   └── icons/               # Ícones utilizados
+│   └── icons/             
 │
-├── css/                     # Arquivos de estilo
-│   └── styles.css           # Estilos principais
+├── css/                    
+│   └── styles.css        
 │
-├── js/                      # Scripts JavaScript
-│   ├── theme.js             # Controle de tema claro/escuro
-│   ├── auth.js              # Autenticação
-│   └── api.js               # Comunicação com o backend
+├── js/                  
+│   ├── theme.js         
+│   ├── auth.js             
+│   └── api.js             
 │
-├── pages/                   # Páginas HTML secundárias
+├── pages/               
 │   ├── home.html
+      ├── index.html
 │   ├── cadastro.html
 │   ├── login.html
 │   ├── doacoes.html
@@ -69,10 +71,10 @@ ajuda-solidaria/
 │   ├── dashboard.html
 │   └── resposta.html
 │
-├── models/                  # Modelos de dados
-│   └── db.js                # Configuração do banco de dados
+├── models/               
+│   └── db.js     
 │
-├── controllers/             # Controladores
+├── controllers/         
 │   ├── auth.controller.js
 │   ├── donation.controller.js
 │   ├── request.controller.js
@@ -80,7 +82,7 @@ ajuda-solidaria/
 │   ├── item.controller.js
 │   └── event.controller.js
 │
-├── routes/                  # Rotas da API
+├── routes/                 
 │   ├── auth.routes.js
 │   ├── donation.routes.js
 │   ├── request.routes.js
@@ -88,21 +90,20 @@ ajuda-solidaria/
 │   ├── item.routes.js
 │   └── event.routes.js
 │
-├── middleware/              # Middlewares
-│   └── auth.middleware.js   # Middleware de autenticação
+├── middleware/        
+│   └── auth.middleware.js  
 │
-├── database/                # Scripts de banco de dados
-│   └── esquema.sql          # Esquema SQL (para MySQL)
+├── database/               
+│   └── esquema.sql      
 │
-├── node_modules/            # Dependências (gerado pelo npm)
+├── node_modules/       
 │
-├── .env                     # Variáveis de ambiente
-├── .gitignore               # Arquivos ignorados pelo git
-├── banco.db                 # Banco de dados SQLite
-├── index.html               # Página principal
-├── package.json             # Configuração do projeto
-├── package-lock.json        # Versões exatas das dependências
-├── README.md                # Documentação
-└── server.js                # Ponto de entrada do servidor
+├── .env            
+├── .gitignore         
+├── banco.db       
+├── package.json           
+├── package-lock.json     
+├── README.md                
+└── server.js                
 - 
 # site
